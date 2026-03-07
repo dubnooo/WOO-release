@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BO — Вхід в акаунт</title>
+    <!-- 1. Підключаємо Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <style>
+        body { margin: 0; padding: 0; background: #000; font-family: Arial, sans-serif; color: #fff; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .login-box { background: #111; padding: 40px; width: 350px; border-radius: 15px; box-shadow: 0 0 20px rgba(255,255,255,0.1); text-align: center; }
+        .logo { font-size: 48px; font-weight: bold; margin-bottom: 25px; }
+        .input-field { width: 100%; padding: 12px; margin: 10px 0; border-radius: 25px; border: none; background: #222; color: #fff; font-size: 16px; outline: none; box-sizing: border-box; }
+        .login-btn { width: 100%; padding: 12px; margin-top: 15px; background: #1d9bf0; border: none; color: #fff; font-size: 18px; border-radius: 25px; cursor: pointer; transition: 0.3s; }
+        .login-btn:hover { background: #1888d4; }
+        .login-btn:disabled { background: #444; cursor: not-allowed; }
+        .small-link { display: block; margin-top: 15px; color: #1d9bf0; text-decoration: none; font-size: 14px; }
+        .small-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<div class="login-box">
+    <div class="logo">BO</div>
+
+    <form id="loginForm">
+        <!-- Використовуйте type="email" для кращої валідації -->
+        <input type="email" id="email" class="input-field" placeholder="Електронна пошта" required>
+        <input type="password" id="pass" class="input-field" placeholder="Пароль" required>
+
+        <button type="submit" id="submitBtn" class="login-btn">Увійти</button>
+    </form>
+
+    <a href="#" class="small-link">Забули пароль?</a>
+    <a href="register.html" class="small-link">Створити акаунт</a>
+</div>
+
+<script>
+    // 2. Налаштування (ВСТАВТЕ ВАШІ ДАНІ)
+    const SUPABASE_URL = 'https://kzfmlkskcovenuoftorm.supabase.co'.trim();
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt6Zm1sa3NrY292ZW51b2Z0b3JtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4NjU0MTMsImV4cCI6MjA4ODQ0MTQxM30.o1N2biSorW85m_mlpAxndmWlLi0d_49WqBLtjxTNGKk'.trim();
+
+    const _supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    const loginForm = document.querySelector("#loginForm");
+    const submitBtn = document.querySelector("#submitBtn");
+
+    loginForm.addEventListener("submit", async function(event) {
+        event.preventDefault();
+
+        const email = document.querySelector("#email").value;
+        const password = document.querySelector("#pass").value;
+
+        // Блокуємо кнопку на час запиту
+        submitBtn.innerText = "Вхід...";
+        submitBtn.disabled = true;
+
+        // 3. Спроба входу в Supabase
+        const { data, error } = await _supabase.auth.signInWithPassword({
+            email: email,
+            password: password,
+        });
+
+        if (error) {
+            // Якщо акаунт не існує або пароль невірний, Supabase поверне помилку
+            alert("Помилка входу: " + error.message);
+            submitBtn.innerText = "Увійти";
+            submitBtn.disabled = false;
+        } else {
+            // Якщо все добре — дані користувача будуть в data.user
+            console.log("Успішний вхід:", data.user);
+            window.location.href = "page.html";
+        }
+    });
+</script>
+
+</body>
+</html>
