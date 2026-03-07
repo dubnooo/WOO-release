@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BO — Пошук</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #000;
+    color: #fff;
+}
+
+.sidebar {
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    border-right: 5px solid #2f3336;
+    padding: 0px;
+}
+
+.logo {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.menu-item {
+    display: block;
+    padding: 12px 0;
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.menu-item:hover,
+.menu-item.active {
+    color: #1d9bf0;
+}
+
+.main {
+    margin-left: 250px;
+    min-height: 100vh;
+}
+
+.header {
+    padding: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    border-bottom: 5px solid #2f3336;
+}
+
+.search-box {
+    padding: 20px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 25px;
+    border: none;
+    background: #202327;
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+.results {
+    padding: 20px;
+}
+
+.user-card {
+    background: #111;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #2f3336;
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+    <div class="logo">BO</div>
+    <a href="page.html" class="menu-item">Головна</a>
+    <a href="search.html" class="menu-item active">Пошук</a>
+    <a href="notifications.html" class="menu-item">Сповіщення</a>
+    <a href="messages.html" class="menu-item">Повідомлення</a>
+    <a href="profile.html" class="menu-item">Профіль</a>
+    <a href="settings.html" class="menu-item">Налаштування</a>
+    <a href="gamehub.html" class="menu-item">Геймерський Хаб</a>
+</div>
+
+<div class="main">
+    <div class="header">Пошук</div>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Пошук користувачів..." onkeyup="searchUsers()">
+    </div>
+
+    <div class="results" id="results"></div>
+</div>
+
+<script>
+// Демонстраційна база користувачів
+const users = [
+    {name: "Elon Musk", username: "elonmusk", bio: "Tesla & SpaceX"},
+    {name: "Mark Zuckerberg", username: "zuck", bio: "Meta CEO"},
+    {name: "Bill Gates", username: "billgates", bio: "Microsoft"},
+    {name: "Steve Jobs", username: "stevejobs", bio: "Apple"},
+    {name: "Orest Glodovsky", username: "orest", bio: "BO Developer"}
+    
+];
+
+function searchUsers(){
+    const input = document.getElementById("searchInput").value.toLowerCase();
+    const resultsDiv = document.getElementById("results");
+    resultsDiv.innerHTML = "";
+
+    if(input === "") return;
+
+    const filtered = users.filter(user =>
+        user.name.toLowerCase().includes(input) ||
+        user.username.toLowerCase().includes(input)
+    );
+
+    if(filtered.length === 0){
+        resultsDiv.innerHTML = "<p>Нічого не знайдено</p>";
+        return;
+    }
+
+    filtered.forEach(user => {
+        const div = document.createElement("div");
+        div.className = "user-card";
+        div.innerHTML = `
+            <strong>${user.name}</strong><br>
+            @${user.username}<br>
+            <small>${user.bio}</small>
+        `;
+        resultsDiv.appendChild(div);
+    });
+}
+</script>
+
+</body>
+</html>
