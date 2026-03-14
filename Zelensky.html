@@ -7,154 +7,173 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
-
-body{
+/* ОСНОВНИЙ ДИЗАЙН САЙТУ — ЧОРНИЙ */
+body {
     font-family: Arial;
+    background-color: #000; /* Повністю чорний фон */
+    color: white;
+    margin: 0;
 }
 
-.chat-header{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    font-size:20px;
-    margin-bottom:10px;
+.main {
+    padding: 20px;
 }
 
-.chat-header img{
-    width:40px;
-    height:40px;
-    border-radius:50%;
+.chat-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    margin-bottom: 15px;
 }
 
-.chat-box{
-    background:#222;
-    padding:10px;
-    border-radius:10px;
-    height:400px;
-    overflow-y:auto;
+.chat-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #333;
 }
 
-.message{
-    padding:10px;
-    margin:8px;
-    border-radius:10px;
-    max-width:60%;
+.chat-box {
+    background: #111; /* Трохи світліше за фон, щоб бачити межі */
+    padding: 15px;
+    border-radius: 10px;
+    height: 400px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
 }
 
-.user{
-    background:#6d3939;
-    margin-left:auto;
-    text-align:right;
+/* АНІМАЦІЯ ПОЯВИ ПОВІДОМЛЕНЬ */
+@keyframes popIn {
+    0% { opacity: 0; transform: scale(0.9) translateY(10px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
 }
 
-.bot{
-    background:#444;
+.message {
+    padding: 10px 15px;
+    margin: 5px 0;
+    border-radius: 15px;
+    max-width: 70%;
+    font-size: 15px;
+    line-height: 1.4;
+    animation: popIn 0.3s ease-out; /* Додана анімація */
 }
 
-.input-box{
-    display:flex;
-    margin-top:10px;
+.user {
+    background: #6d3939;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
 }
 
-.input-box input{
-    flex:1;
-    padding:10px;
-    border-radius:10px;
-    border:none;
+.bot {
+    background: #333;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
 }
 
-.input-box button{
-    margin-left:10px;
-    padding:10px 20px;
-    border:none;
-    border-radius:10px;
-    background:#6d3939;
-    color:white;
-    cursor:pointer;
+/* ФОРМА ВВОДУ — КНОПКА ТА ПОЛЕ В ОДИН РІВЕНЬ */
+.input-box {
+    display: flex;
+    margin-top: 10px;
+    gap: 8px; /* Відстань між інпутом і кнопкою */
 }
 
+.input-box input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background: #1a1a1a;
+    color: white;
+    outline: none;
+}
+
+.input-box button {
+    padding: 0 15px; /* Менша ширина */
+    height: 42px;    /* Така ж висота, як у інпуту */
+    border: none;
+    border-radius: 8px;
+    background: #6d3939;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.input-box button:hover {
+    background: #8b4a4a;
+}
 </style>
 </head>
 
 <body>
 
 <div class="sidebar">
-<div class="logo">BO</div>
-<a href="page.html" class="menu-item">Головна</a>
-<a href="search.html" class="menu-item">Пошук</a>
-<a href="notifications.html" class="menu-item">Сповіщення</a>
-<a href="messages.html" class="menu-item active">Повідомлення</a>
-<a href="profile.html" class="menu-item">Профіль</a>
-<a href="settings.html" class="menu-item">Налаштування</a>
-<a href="gamehub.html" class="menu-item">Геймерський Хаб</a>
-<a href="musilk.html" class="menu-item">WOtify</a>
+    <div class="logo">BO</div>
+    <a href="page.html" class="menu-item">Головна</a>
+    <a href="search.html" class="menu-item">Пошук</a>
+    <a href="notifications.html" class="menu-item">Сповіщення</a>
+    <a href="messages.html" class="menu-item active">Повідомлення</a>
+    <a href="profile.html" class="menu-item">Профіль</a>
+    <a href="settings.html" class="menu-item">Налаштування</a>
+    <a href="gamehub.html" class="menu-item">Геймерський Хаб</a>
+    <a href="musilk.html" class="menu-item">WOtify</a>
 </div>
 
 <div class="main">
+    <div class="chat-header">
+        <img src="https://gordonua.com/img/article/16470/35_big-v1674638227.jpg">
+        Переписка з Zelensky_official
+    </div>
 
-<div class="chat-header">
-<img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Volodymyr_Zelensky_Official_portrait.jpg">
-Переписка з Zelensky_official
-</div>
+    <div class="chat-box" id="chat"></div>
 
-<div class="chat-box" id="chat"></div>
-
-<div class="input-box">
-<input type="text" id="messageInput" placeholder="Напишіть повідомлення...">
-<button onclick="sendMessage()">Надіслати</button>
-</div>
-
+    <div class="input-box">
+        <input type="text" id="messageInput" placeholder="Напишіть повідомлення..." onkeydown="if(event.key === 'Enter') sendMessage()">
+        <button onclick="sendMessage()">Надіслати</button>
+    </div>
 </div>
 
 <script>
+function sendMessage() {
+    let input = document.getElementById("messageInput");
+    let text = input.value;
 
-function sendMessage(){
+    if (text.trim() === "") return;
 
-let input = document.getElementById("messageInput");
-let text = input.value;
+    let chat = document.getElementById("chat");
 
-if(text.trim() === "") return;
+    let userMessage = document.createElement("div");
+    userMessage.className = "message user";
+    userMessage.textContent = text;
 
-let chat = document.getElementById("chat");
+    chat.appendChild(userMessage);
+    input.value = "";
+    chat.scrollTop = chat.scrollHeight;
 
-let userMessage = document.createElement("div");
-userMessage.className = "message user";
-userMessage.textContent = text;
-
-chat.appendChild(userMessage);
-
-input.value = "";
-
-chat.scrollTop = chat.scrollHeight;
-
-setTimeout(replyMessage,1000);
-
+    setTimeout(replyMessage, 1000);
 }
 
-function replyMessage(){
+function replyMessage() {
+    let replies = [
+        "Дякую за повідомлення!",
+        "Разом ми сильніші 🇺🇦",
+        "Віримо в перемогу!",
+        "Підтримуйте одне одного.",
+        "Україна обов'язково переможе."
+    ];
 
-let replies = [
-"Дякую за повідомлення!",
-"Разом ми сильніші 🇺🇦",
-"Віримо в перемогу!",
-"Підтримуйте одне одного.",
-"Україна обов'язково переможе."
-];
+    let random = replies[Math.floor(Math.random() * replies.length)];
+    let chat = document.getElementById("chat");
 
-let random = replies[Math.floor(Math.random()*replies.length)];
+    let botMessage = document.createElement("div");
+    botMessage.className = "message bot";
+    botMessage.textContent = random;
 
-let chat = document.getElementById("chat");
-
-let botMessage = document.createElement("div");
-botMessage.className = "message bot";
-botMessage.textContent = random;
-
-chat.appendChild(botMessage);
-
-chat.scrollTop = chat.scrollHeight;
-
+    chat.appendChild(botMessage);
+    chat.scrollTop = chat.scrollHeight;
 }
-
 </script>
 
 </body>
