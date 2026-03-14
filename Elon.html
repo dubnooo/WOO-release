@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BO — Повідомлення з Ілоном</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+/* ТВІЙ ДИЗАЙН: ЧОРНИЙ ФОН */
+body {
+    font-family: Arial;
+    background-color: #000;
+    color: white;
+    margin: 0;
+}
+
+.main {
+    padding: 20px;
+}
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.chat-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #333;
+    object-fit: cover;
+}
+
+.chat-box {
+    background: #111;
+    padding: 15px;
+    border-radius: 10px;
+    height: 400px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* АНІМАЦІЯ */
+@keyframes popIn {
+    0% { opacity: 0; transform: scale(0.9) translateY(10px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.message {
+    padding: 10px 15px;
+    margin: 5px 0;
+    border-radius: 15px;
+    max-width: 70%;
+    font-size: 15px;
+    line-height: 1.4;
+    animation: popIn 0.3s ease-out;
+}
+
+.user {
+    background: #6d3939;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+}
+
+.bot {
+    background: #333;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+}
+
+/* КНОПКА І ІНПУТ НА ОДНІЙ ЛІНІЇ */
+.input-box {
+    display: flex;
+    margin-top: 10px;
+    gap: 8px;
+}
+
+.input-box input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background: #1a1a1a;
+    color: white;
+    outline: none;
+}
+
+.input-box button {
+    padding: 0 15px;
+    height: 42px;
+    border: none;
+    border-radius: 8px;
+    background: #6d3939;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.input-box button:hover {
+    background: #8b4a4a;
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+    <div class="logo">BO</div>
+    <a href="page.html" class="menu-item">Головна</a>
+    <a href="search.html" class="menu-item">Пошук</a>
+    <a href="notifications.html" class="menu-item">Сповіщення</a>
+    <a href="messages.html" class="menu-item active">Повідомлення</a>
+    <a href="profile.html" class="menu-item">Профіль</a>
+    <a href="settings.html" class="menu-item">Налаштування</a>
+    <a href="gamehub.html" class="menu-item">Геймерський Хаб</a>
+    <a href="musilk.html" class="menu-item">WOtify</a>
+</div>
+
+<div class="main">
+    <div class="chat-header">
+        <img src="https://static.scientificamerican.com/dam/m/7c8a7152a1a912/original/elon_musk.jpg?m=1726168472.509&w=600">
+        Переписка з Elon Musk
+    </div>
+
+    <div class="chat-box" id="chat"></div>
+
+    <div class="input-box">
+        <input type="text" id="messageInput" placeholder="Напишіть Ілону..." onkeydown="if(event.key === 'Enter') sendMessage()">
+        <button onclick="sendMessage()">Надіслати</button>
+    </div>
+</div>
+
+<script>
+function sendMessage() {
+    let input = document.getElementById("messageInput");
+    let text = input.value;
+    if (text.trim() === "") return;
+
+    let chat = document.getElementById("chat");
+    let userMsg = document.createElement("div");
+    userMsg.className = "message user";
+    userMsg.textContent = text;
+    chat.appendChild(userMsg);
+    input.value = "";
+    chat.scrollTop = chat.scrollHeight;
+
+    setTimeout(replyMessage, 1000);
+}
+
+function replyMessage() {
+    let replies = ["Марс чекає на нас! 🚀", "ШІ змінить усе.", "Starship готовий.", "X — це майбутнє.", "Цікава думка."];
+    let random = replies[Math.floor(Math.random() * replies.length)];
+    let chat = document.getElementById("chat");
+    let botMsg = document.createElement("div");
+    botMsg.className = "message bot";
+    botMsg.textContent = random;
+    chat.appendChild(botMsg);
+    chat.scrollTop = chat.scrollHeight;
+}
+</script>
+</body>
+</html>
