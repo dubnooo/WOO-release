@@ -7,42 +7,55 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
-/* ТВІЙ ДИЗАЙН: ЧОРНИЙ ФОН */
+/* ГОЛОВНИЙ ФОН */
 body {
     font-family: Arial;
-    background-color: #000;
+    background: linear-gradient(135deg, #9C2E35, #5c1b20, #2a0d10);
     color: white;
     margin: 0;
 }
 
+/* БОКОВЕ МЕНЮ */
+.sidebar {
+    background: #7d252b;
+}
+
+/* ОСНОВНА ЧАСТИНА */
 .main {
     padding: 20px;
 }
 
+/* ШАПКА ЧАТУ */
 .chat-header {
     display: flex;
     align-items: center;
     gap: 10px;
     font-size: 20px;
     margin-bottom: 15px;
+    background: rgba(255,255,255,0.04);
+    padding: 10px;
+    border-radius: 12px;
 }
 
 .chat-header img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 1px solid #333;
+    border: 2px solid #9C2E35;
     object-fit: cover;
 }
 
+/* ЧАТ */
 .chat-box {
-    background: #111;
+    background: rgba(20, 20, 20, 0.85);
+    backdrop-filter: blur(6px);
     padding: 15px;
-    border-radius: 10px;
+    border-radius: 15px;
     height: 400px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
+    border: 1px solid #9C2E35;
 }
 
 /* АНІМАЦІЯ */
@@ -61,19 +74,21 @@ body {
     animation: popIn 0.3s ease-out;
 }
 
+/* ПОВІДОМЛЕННЯ */
 .user {
-    background: #6d3939;
+    background: #9C2E35;
     align-self: flex-end;
     border-bottom-right-radius: 2px;
+    box-shadow: 0 0 10px rgba(156, 46, 53, 0.5);
 }
 
 .bot {
-    background: #333;
+    background: #5c1b20;
     align-self: flex-start;
     border-bottom-left-radius: 2px;
 }
 
-/* КНОПКА І ІНПУТ НА ОДНІЙ ЛІНІЇ */
+/* INPUT + BUTTON */
 .input-box {
     display: flex;
     margin-top: 10px;
@@ -84,10 +99,14 @@ body {
     flex: 1;
     padding: 12px;
     border-radius: 8px;
-    border: 1px solid #333;
-    background: #1a1a1a;
+    border: 1px solid #9C2E35;
+    background: #1b0d0f;
     color: white;
     outline: none;
+}
+
+.input-box input::placeholder {
+    color: #c7a3a6;
 }
 
 .input-box button {
@@ -95,15 +114,16 @@ body {
     height: 42px;
     border: none;
     border-radius: 8px;
-    background: #6d3939;
+    background: #9C2E35;
     color: white;
     font-size: 14px;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: 0.2s;
 }
 
 .input-box button:hover {
-    background: #8b4a4a;
+    background: #b63b43;
+    transform: scale(1.03);
 }
 </style>
 </head>
