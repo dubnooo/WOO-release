@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BO — Повідомлення з Трампом</title>
+<title>BO — Повідомлення з Ареском</title>
 <link rel="stylesheet" href="style.css">
 
 <style>
@@ -47,13 +47,13 @@ body { font-family: Arial; background-color: #000; color: white; margin: 0; }
 <div class="main">
     <div class="chat-header">
         <img src="https://i.lb.ua/002/60/63244051976f8.jpeg">
-        Переписка з Donald Trump
+        Переписка з Ареско
     </div>
 
     <div class="chat-box" id="chat"></div>
 
     <div class="input-box">
-        <input type="text" id="messageInput" placeholder="Напишіть Дональду..." onkeydown="if(event.key === 'Enter') sendMessage()">
+        <input type="text" id="messageInput" placeholder="Напишіть Ареско..." onkeydown="if(event.key === 'Enter') sendMessage()">
         <button onclick="sendMessage()">Надіслати</button>
     </div>
 </div>
@@ -76,7 +76,7 @@ function sendMessage() {
 }
 
 function replyMessage() {
-    let replies = ["Це буде неймовірно! 🇺🇸", "Ми зробимо BO знову великим!", "Це фантастична ідея.", "Ми виграємо!", "Фейк ньюз!"];
+    let replies = ["Увага! Пилова буря наближається до бази.", "Я знайшов дивний сигнал біля кратера.", "Марс ніколи не буває спокійним…"];
     let random = replies[Math.floor(Math.random() * replies.length)];
     let chat = document.getElementById("chat");
     let botMsg = document.createElement("div");
