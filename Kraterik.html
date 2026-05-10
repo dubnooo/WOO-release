@@ -18,7 +18,7 @@ body {
     overflow: hidden;
 }
 
-/* СВІТІННЯ */
+
 body::before {
     content: "";
     position: fixed;
@@ -38,12 +38,12 @@ body::before {
     z-index: -1;
 }
 
-/* ОСНОВА */
+
 .main {
     padding: 20px;
 }
 
-/* HEADER */
+
 .chat-header {
     display: flex;
     align-items: center;
@@ -68,7 +68,7 @@ body::before {
         0 0 25px rgba(66,255,123,0.12);
 }
 
-/* АВАТАР */
+
 .chat-header img {
     width: 46px;
     height: 46px;
@@ -82,7 +82,7 @@ body::before {
     box-shadow: 0 0 15px rgba(66,255,123,0.35);
 }
 
-/* ЧАТ */
+
 .chat-box {
     background: rgba(10, 15, 20, 0.92);
 
@@ -106,7 +106,7 @@ body::before {
         inset 0 0 20px rgba(255,255,255,0.02);
 }
 
-/* СКРОЛ */
+
 .chat-box::-webkit-scrollbar {
     width: 8px;
 }
@@ -116,7 +116,7 @@ body::before {
     border-radius: 10px;
 }
 
-/* АНІМАЦІЯ */
+
 @keyframes popIn {
     0% {
         opacity: 0;
@@ -129,7 +129,7 @@ body::before {
     }
 }
 
-/* ПОВІДОМЛЕННЯ */
+
 .message {
     padding: 12px 16px;
 
@@ -146,7 +146,7 @@ body::before {
     animation: popIn 0.3s ease-out;
 }
 
-/* USER */
+
 .user {
     background:
         linear-gradient(135deg, #42ff7b, #1fa85a);
@@ -160,7 +160,7 @@ body::before {
     box-shadow: 0 0 15px rgba(66,255,123,0.35);
 }
 
-/* BOT */
+
 .bot {
     background:
         linear-gradient(135deg, #1b2735, #243447);
@@ -176,7 +176,7 @@ body::before {
     box-shadow: 0 0 15px rgba(66,255,123,0.08);
 }
 
-/* INPUT */
+
 .input-box {
     display: flex;
 
@@ -185,7 +185,7 @@ body::before {
     gap: 8px;
 }
 
-/* ПОЛЕ */
+
 .input-box input {
     flex: 1;
 
@@ -216,7 +216,7 @@ body::before {
     transform: scale(1.01);
 }
 
-/* КНОПКА */
+
 .input-box button {
     padding: 0 18px;
 
@@ -237,7 +237,6 @@ body::before {
     transition: 0.25s;
 }
 
-/* HOVER */
 .input-box button:hover {
     transform: translateY(-2px) scale(1.03);
 
@@ -264,7 +263,7 @@ body::before {
 <div class="main">
     <div class="chat-header">
         <img src="https://gordonua.com/img/article/16470/35_big-v1674638227.jpg">
-        Переписка з Zelensky_official
+        Переписка з Kraterik
     </div>
 
     <div class="chat-box" id="chat"></div>
@@ -297,11 +296,9 @@ function sendMessage() {
 
 function replyMessage() {
     let replies = [
-        "Дякую за повідомлення!",
-        "Разом ми сильніші 🇺🇦",
-        "Віримо в перемогу!",
-        "Підтримуйте одне одного.",
-        "Україна обов'язково переможе."
+        "Біп-буп! Я вже сховав усі інструменти.",
+        "Ого, тут є таємний тунель!",
+        "Ареско, не забудь зарядити мій акумулятор!"
     ];
 
     let random = replies[Math.floor(Math.random() * replies.length)];
