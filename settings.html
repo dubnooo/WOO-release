@@ -1,125 +1,232 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BOMars — Налаштування</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BOMars — Налаштування</title>
 
-    <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #000;
-        color: #fff;
-    }
-    
-    .sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 250px;
-        height: 100%;
-        border-right: 5px solid #2f3336;
-        padding: 0px;
-    }
-    
-    .logo {
-        font-size: 40px;
-        font-weight: bold;
-        margin-bottom: 30px;
-    }
-    
-    .menu-item {
-        display: block;
-        padding: 12px 0;
-        font-size: 20px;
-        color: white;
-        text-decoration: none;
-    }
-    
-    .menu-item:hover,
-    .menu-item.active {
-        color: #1d9bf0;
-    }
-    
-    .main {
-        margin-left: 250px;
-        height: 100vh;
-        overflow-y: auto;
-    }
-    
-    .header {
-        position: sticky;
-        top: 0;
-        background: #000;
-        padding: 15px;
-        font-size: 22px;
-        font-weight: bold;
-        border-bottom: 5px solid #2f3336;
-    }
+<style>
+/* 🌋 МАРСІАНСЬКИЙ СТИЛЬ */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #ffd7c2;
 
-    /* ===== НАЛАШТУВАННЯ ===== */
+    background:
+        radial-gradient(circle at top, #3a1f14 0%, #1a0d0a 45%, #070403 100%);
+}
 
-    .settings-container {
-        padding: 30px;
-        max-width: 700px;
-    }
+/* пил Марса */
+body::before {
+    content: "";
+    position: fixed;
 
-    .setting-card {
-        background: #111;
-        border: 1px solid #2f3336;
-        border-radius: 15px;
-        padding: 20px;
-        margin-bottom: 20px;
-    }
+    width: 800px;
+    height: 800px;
 
-    .setting-card h3 {
-        margin-bottom: 10px;
-    }
+    background: rgba(255, 90, 40, 0.12);
 
-    .setting-card input {
-        width: 100%;
-        padding: 10px;
-        margin-top: 10px;
-        border-radius: 8px;
-        border: 1px solid #333;
-        background: #000;
-        color: white;
-        font-size: 16px;
-        outline: none;
-    }
+    border-radius: 50%;
 
-    .save-btn {
-        background: #1d9bf0;
-        border: none;
-        padding: 10px 18px;
-        border-radius: 25px;
-        font-size: 16px;
-        color: #fff;
-        cursor: pointer;
-        margin-top: 15px;
-    }
+    filter: blur(140px);
 
-    .save-btn:hover {
-        background: #1a8cd8;
-    }
+    top: -250px;
+    right: -200px;
 
-    .logout-btn {
-    background: #ff4d4d;
-    border: none;
-    padding: 10px 18px;
-    border-radius: 25px;
-    font-size: 16px;
-    color: #fff;
-    cursor: pointer;
+    z-index: -1;
+}
+
+/* SIDEBAR */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 250px;
+    height: 100%;
+
+    background: rgba(20,10,8,0.95);
+
+    border-right: 1px solid rgba(255,106,42,0.25);
+
+    padding: 10px;
+}
+
+.logo {
+    font-size: 40px;
+    font-weight: bold;
+
+    margin-bottom: 30px;
+
+    color: #ff6a2a;
+
+    text-shadow: 0 0 15px rgba(255,106,42,0.4);
+}
+
+.menu-item {
+    display: block;
+
+    padding: 12px 10px;
+
+    font-size: 18px;
+
+    color: #ffd7c2;
+
+    text-decoration: none;
+
+    border-radius: 10px;
+
+    transition: 0.2s;
+}
+
+.menu-item:hover,
+.menu-item.active {
+    background: rgba(255,106,42,0.2);
+    color: #ff6a2a;
+}
+
+/* MAIN */
+.main {
+    margin-left: 250px;
+    min-height: 100vh;
+}
+
+/* HEADER */
+.header {
+    position: sticky;
+    top: 0;
+
+    padding: 15px;
+
+    font-size: 22px;
+    font-weight: bold;
+
+    background: rgba(20,10,8,0.95);
+
+    border-bottom: 1px solid rgba(255,106,42,0.3);
+
+    backdrop-filter: blur(10px);
+}
+
+/* SETTINGS */
+.settings-container {
+    padding: 30px;
+    max-width: 700px;
+}
+
+/* CARD */
+.setting-card {
+    background: rgba(10,8,6,0.92);
+
+    border: 1px solid rgba(255,106,42,0.25);
+
+    border-radius: 16px;
+
+    padding: 20px;
+
+    margin-bottom: 20px;
+
+    backdrop-filter: blur(10px);
+
+    transition: 0.2s;
+}
+
+.setting-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 0 20px rgba(255,106,42,0.2);
+}
+
+.setting-card h3 {
+    margin-bottom: 10px;
+    color: #ffb39a;
+}
+
+/* INPUT */
+.setting-card input {
+    width: 100%;
+
+    padding: 12px;
+
     margin-top: 10px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(255,106,42,0.2);
+
+    background: rgba(255,255,255,0.04);
+
+    color: white;
+
+    font-size: 16px;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+.setting-card input:focus {
+    border-color: #ff6a2a;
+
+    box-shadow: 0 0 15px rgba(255,106,42,0.25);
+}
+
+/* SAVE BUTTON */
+.save-btn {
+    background: linear-gradient(135deg, #ff6a2a, #ff3b1f);
+
+    border: none;
+
+    padding: 10px 18px;
+
+    border-radius: 20px;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    color: black;
+
+    cursor: pointer;
+
+    margin-top: 15px;
+
+    transition: 0.2s;
+}
+
+.save-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255,106,42,0.35);
+}
+
+/* LOGOUT */
+.logout-btn {
+    background: #ff3b1f;
+
+    border: none;
+
+    padding: 10px 18px;
+
+    border-radius: 20px;
+
+    font-size: 16px;
+
+    color: black;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    margin-top: 10px;
+
+    transition: 0.2s;
 }
 
 .logout-btn:hover {
-    background: #e63939;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255,60,30,0.4);
 }
-
-    </style>
+</style>
 </head>
 
 <body>
@@ -133,11 +240,11 @@
     <a href="profile.html" class="menu-item">Профіль</a>
     <a href="settings.html" class="menu-item active">Налаштування</a>
     <a href="gamehub.html" class="menu-item">Геймерський Хаб</a>
-    <a href="musilk.html" class="menu-item active">WOtify</a>
+    <a href="musilk.html" class="menu-item">WOtify</a>
 </div>
 
 <div class="main">
-    <div class="header">Налаштування</div>
+    <div class="header">Налаштування (Mars System)</div>
 
     <div class="settings-container">
 
@@ -158,19 +265,22 @@
             <input type="password" placeholder="Новий пароль">
             <button class="save-btn">Змінити</button>
         </div>
+
         <div class="setting-card">
-    <h3 style="color:#ff4d4d;">Вийти з акаунта</h3>
-    <button class="logout-btn" onclick="logout()">Вийти</button>
-</div>
+            <h3 style="color:#ff6a2a;">Вийти з акаунта</h3>
+            <button class="logout-btn" onclick="logout()">Вийти</button>
+        </div>
+
     </div>
 </div>
 
-</body>
 <script>
 function logout() {
-    localStorage.clear(); // очищає всі збережені дані
+    localStorage.clear();
     alert("Ви вийшли з акаунта");
-    window.location.href = "login.html"; // переадресація
+    window.location.href = "login.html";
 }
 </script>
+
+</body>
 </html>
