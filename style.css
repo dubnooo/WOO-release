@@ -154,11 +154,11 @@ body {
 .header {
     position: sticky;
     top: 0;
-    background: #000;
+    background: #9C2E35;
     padding: 15px;
     font-size: 22px;
     font-weight: bold;
-    border-bottom: 5px solid #2f3336;
+    border-bottom: 5px solid #ff8c40;
 }
 
 .post-box {
