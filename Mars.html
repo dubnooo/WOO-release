@@ -156,15 +156,15 @@ body {
 
 <div class="main">
     <div class="chat-header">
-        <!-- Оновлене фото та ім'я -->
-        <img src="https://unn.ua/img/tags/1706213131-1842-large.webp">
+       
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNnn46jvP8uNeHu6rtuIKenYfFR3B9f5fb1w&s">
         Переписка з Марсіанином
     </div>
 
     <div class="chat-box" id="chat"></div>
 
     <div class="input-box">
-        <input type="text" id="messageInput" placeholder="Напишіть Верховному лідеру..." onkeydown="if(event.key === 'Enter') sendMessage()">
+        <input type="text" id="messageInput" placeholder="Напишіть жителю Марса..." onkeydown="if(event.key === 'Enter') sendMessage()">
         <button onclick="sendMessage()">Надіслати</button>
     </div>
 </div>
@@ -173,13 +173,17 @@ body {
 function sendMessage() {
     let input = document.getElementById("messageInput");
     let text = input.value;
+
     if (text.trim() === "") return;
 
     let chat = document.getElementById("chat");
+
     let userMsg = document.createElement("div");
     userMsg.className = "message user";
     userMsg.textContent = text;
+
     chat.appendChild(userMsg);
+
     input.value = "";
     chat.scrollTop = chat.scrollHeight;
 
@@ -187,23 +191,29 @@ function sendMessage() {
 }
 
 function replyMessage() {
-    // Оновлені репліки Кім Чен Ина
+
+    // ФРАЗИ МАРСІАНИНА
     let replies = [
-        "👽 Вітаю, землянине.", 
-        "🛸 Сигнал отримано з орбіти Марса.", 
-        "🌌 Ми спостерігаємо за вами.", 
-        "🚀 Гіпердвигун уже активовано.", 
+        "👽 Вітаю, землянине.",
+        "🛸 Сигнал отримано з орбіти Марса.",
+        "🌌 Ми спостерігаємо за вами.",
+        "🚀 Гіпердвигун уже активовано.",
         "🪐 На Марсі сьогодні пилова буря.",
-        "📡 Твій сигнал передано галактичній раді."
-        "👾 Земля виглядає дивно… але цікаво."
+        "📡 Твій сигнал передано галактичній раді.",
+        "👾 Земля виглядає дивно… але цікаво.",
         "☄️ Приготуйся до міжгалактичної подорожі."
     ];
+
     let random = replies[Math.floor(Math.random() * replies.length)];
+
     let chat = document.getElementById("chat");
+
     let botMsg = document.createElement("div");
     botMsg.className = "message bot";
     botMsg.textContent = random;
+
     chat.appendChild(botMsg);
+
     chat.scrollTop = chat.scrollHeight;
 }
 </script>
