@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BOMars — Вхід в акаунт</title>
-    <!-- 1. Підключаємо Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BOMars — Вхід в акаунт</title>
 
-    <style>
-      body {
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+body {
     margin: 0;
     padding: 0;
 
@@ -22,55 +22,50 @@
     height: 100vh;
 
     background:
-        radial-gradient(circle at top, #1d3b2a 0%, #0b0f1a 55%, #05070d 100%);
+        radial-gradient(circle at top, #3a1f14 0%, #1a0d0a 55%, #070403 100%);
 
     overflow: hidden;
 }
 
-/* НЕОНОВЕ СВІТІННЯ */
+/* МАРСІАНСЬКИЙ СВІТ */
 body::before {
     content: "";
-
     position: absolute;
 
-    width: 700px;
-    height: 700px;
+    width: 750px;
+    height: 750px;
 
-    background: rgba(66,255,123,0.08);
+    background: rgba(255, 90, 40, 0.10);
 
     border-radius: 50%;
 
-    filter: blur(120px);
+    filter: blur(130px);
 
     top: -220px;
-    right: -150px;
+    right: -160px;
 
     z-index: -1;
 }
 
 /* КАРТКА */
 .login-box {
-    position: relative;
-
     width: 350px;
 
     padding: 42px;
 
     border-radius: 24px;
 
-    background: rgba(10, 15, 20, 0.92);
+    background: rgba(15, 8, 6, 0.92);
 
     backdrop-filter: blur(12px);
 
-    border: 1px solid rgba(66,255,123,0.18);
+    border: 1px solid rgba(255, 106, 42, 0.25);
 
     box-shadow:
-        0 0 25px rgba(66,255,123,0.12),
-        0 0 80px rgba(0,0,0,0.55);
+        0 0 25px rgba(255,106,42,0.12),
+        0 0 80px rgba(0,0,0,0.6);
 
     text-align: center;
-
-    animation: fadeIn 0.6s ease;
 }
 
 /* ЛОГО */
@@ -80,12 +75,12 @@ body::before {
 
     margin-bottom: 28px;
 
-    background: linear-gradient(135deg, #42ff7b, #8dffbc);
+    background: linear-gradient(135deg, #ff6a2a, #ff3b1f);
 
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
-    text-shadow: 0 0 15px rgba(66,255,123,0.25);
+    text-shadow: 0 0 15px rgba(255,106,42,0.25);
 }
 
 /* INPUT */
@@ -98,7 +93,7 @@ body::before {
 
     border-radius: 15px;
 
-    border: 1px solid rgba(66,255,123,0.14);
+    border: 1px solid rgba(255,106,42,0.18);
 
     background: rgba(255,255,255,0.04);
 
@@ -113,22 +108,19 @@ body::before {
     transition: 0.25s;
 }
 
-/* PLACEHOLDER */
 .input-field::placeholder {
-    color: #8ecaa5;
+    color: #ffb39a;
 }
 
-/* FOCUS */
 .input-field:focus {
-    border-color: #42ff7b;
+    border-color: #ff6a2a;
 
-    box-shadow:
-        0 0 15px rgba(66,255,123,0.22);
+    box-shadow: 0 0 15px rgba(255,106,42,0.25);
 
     transform: scale(1.02);
 }
 
-/* КНОПКА */
+/* BUTTON */
 .login-btn {
     width: 100%;
 
@@ -140,8 +132,7 @@ body::before {
 
     border-radius: 15px;
 
-    background:
-        linear-gradient(135deg, #42ff7b, #1fa85a);
+    background: linear-gradient(135deg, #ff6a2a, #ff3b1f);
 
     color: black;
 
@@ -152,31 +143,27 @@ body::before {
 
     transition: 0.25s;
 
-    box-shadow:
-        0 0 15px rgba(66,255,123,0.18);
+    box-shadow: 0 0 18px rgba(255,106,42,0.2);
 }
 
-/* HOVER */
 .login-btn:hover {
     transform: translateY(-2px) scale(1.03);
 
-    box-shadow:
-        0 0 25px rgba(66,255,123,0.35);
+    box-shadow: 0 0 25px rgba(255,106,42,0.4);
 }
 
-/* DISABLED */
 .login-btn:disabled {
     opacity: 0.7;
     cursor: not-allowed;
 }
 
-/* ПОСИЛАННЯ */
+/* LINKS */
 .small-link {
     display: block;
 
     margin-top: 15px;
 
-    color: #7dffae;
+    color: #ff9b6a;
 
     text-decoration: none;
 
@@ -185,34 +172,19 @@ body::before {
     transition: 0.2s;
 }
 
-/* HOVER */
 .small-link:hover {
-    color: #42ff7b;
-
-    text-shadow: 0 0 8px rgba(66,255,123,0.35);
+    color: #ff6a2a;
+    text-shadow: 0 0 10px rgba(255,106,42,0.35);
 }
-
-/* АНІМАЦІЯ */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px) scale(0.96);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-    </style>
+</style>
 </head>
+
 <body>
 
 <div class="login-box">
     <div class="logo">BOMars</div>
 
     <form id="loginForm">
-        <!-- Використовуйте type="email" для кращої валідації -->
         <input type="email" id="email" class="input-field" placeholder="Електронна пошта" required>
         <input type="password" id="pass" class="input-field" placeholder="Пароль" required>
 
@@ -224,42 +196,36 @@ body::before {
 </div>
 
 <script>
-    // 2. Налаштування (ВСТАВТЕ ВАШІ ДАНІ)
-    const SUPABASE_URL = 'https://kzfmlkskcovenuoftorm.supabase.co'.trim();
-    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt6Zm1sa3NrY292ZW51b2Z0b3JtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4NjU0MTMsImV4cCI6MjA4ODQ0MTQxM30.o1N2biSorW85m_mlpAxndmWlLi0d_49WqBLtjxTNGKk'.trim();
+const SUPABASE_URL = 'https://kzfmlkskcovenuoftorm.supabase.co'.trim();
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1Ni...'.trim();
 
-    const _supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const _supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-    const loginForm = document.querySelector("#loginForm");
-    const submitBtn = document.querySelector("#submitBtn");
+const loginForm = document.querySelector("#loginForm");
+const submitBtn = document.querySelector("#submitBtn");
 
-    loginForm.addEventListener("submit", async function(event) {
-        event.preventDefault();
+loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-        const email = document.querySelector("#email").value;
-        const password = document.querySelector("#pass").value;
+    const email = document.querySelector("#email").value;
+    const password = document.querySelector("#pass").value;
 
-        // Блокуємо кнопку на час запиту
-        submitBtn.innerText = "Вхід...";
-        submitBtn.disabled = true;
+    submitBtn.innerText = "Вхід...";
+    submitBtn.disabled = true;
 
-        // 3. Спроба входу в Supabase
-        const { data, error } = await _supabase.auth.signInWithPassword({
-            email: email,
-            password: password,
-        });
-
-        if (error) {
-            // Якщо акаунт не існує або пароль невірний, Supabase поверне помилку
-            alert("Помилка входу: " + error.message);
-            submitBtn.innerText = "Увійти";
-            submitBtn.disabled = false;
-        } else {
-            // Якщо все добре — дані користувача будуть в data.user
-            console.log("Успішний вхід:", data.user);
-            window.location.href = "page.html";
-        }
+    const { data, error } = await _supabase.auth.signInWithPassword({
+        email,
+        password
     });
+
+    if (error) {
+        alert("Помилка входу: " + error.message);
+        submitBtn.innerText = "Увійти";
+        submitBtn.disabled = false;
+    } else {
+        window.location.href = "page.html";
+    }
+});
 </script>
 
 </body>
