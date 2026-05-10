@@ -8,15 +8,202 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <style>
-        body { margin: 0; padding: 0; background: #000; font-family: Arial, sans-serif; color: #fff; display: flex; justify-content: center; align-items: center; height: 100vh; }
-        .login-box { background: #111; padding: 40px; width: 350px; border-radius: 15px; box-shadow: 0 0 20px rgba(255,255,255,0.1); text-align: center; }
-        .logo { font-size: 48px; font-weight: bold; margin-bottom: 25px; }
-        .input-field { width: 100%; padding: 12px; margin: 10px 0; border-radius: 25px; border: none; background: #222; color: #fff; font-size: 16px; outline: none; box-sizing: border-box; }
-        .login-btn { width: 100%; padding: 12px; margin-top: 15px; background: #1d9bf0; border: none; color: #fff; font-size: 18px; border-radius: 25px; cursor: pointer; transition: 0.3s; }
-        .login-btn:hover { background: #1888d4; }
-        .login-btn:disabled { background: #444; cursor: not-allowed; }
-        .small-link { display: block; margin-top: 15px; color: #1d9bf0; text-decoration: none; font-size: 14px; }
-        .small-link:hover { text-decoration: underline; }
+      body {
+    margin: 0;
+    padding: 0;
+
+    font-family: Arial, sans-serif;
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+
+    background:
+        radial-gradient(circle at top, #1d3b2a 0%, #0b0f1a 55%, #05070d 100%);
+
+    overflow: hidden;
+}
+
+/* НЕОНОВЕ СВІТІННЯ */
+body::before {
+    content: "";
+
+    position: absolute;
+
+    width: 700px;
+    height: 700px;
+
+    background: rgba(66,255,123,0.08);
+
+    border-radius: 50%;
+
+    filter: blur(120px);
+
+    top: -220px;
+    right: -150px;
+
+    z-index: -1;
+}
+
+/* КАРТКА */
+.login-box {
+    position: relative;
+
+    width: 350px;
+
+    padding: 42px;
+
+    border-radius: 24px;
+
+    background: rgba(10, 15, 20, 0.92);
+
+    backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(66,255,123,0.18);
+
+    box-shadow:
+        0 0 25px rgba(66,255,123,0.12),
+        0 0 80px rgba(0,0,0,0.55);
+
+    text-align: center;
+
+    animation: fadeIn 0.6s ease;
+}
+
+/* ЛОГО */
+.logo {
+    font-size: 58px;
+    font-weight: bold;
+
+    margin-bottom: 28px;
+
+    background: linear-gradient(135deg, #42ff7b, #8dffbc);
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-shadow: 0 0 15px rgba(66,255,123,0.25);
+}
+
+/* INPUT */
+.input-field {
+    width: 100%;
+
+    padding: 14px;
+
+    margin: 10px 0;
+
+    border-radius: 15px;
+
+    border: 1px solid rgba(66,255,123,0.14);
+
+    background: rgba(255,255,255,0.04);
+
+    color: white;
+
+    font-size: 15px;
+
+    outline: none;
+
+    box-sizing: border-box;
+
+    transition: 0.25s;
+}
+
+/* PLACEHOLDER */
+.input-field::placeholder {
+    color: #8ecaa5;
+}
+
+/* FOCUS */
+.input-field:focus {
+    border-color: #42ff7b;
+
+    box-shadow:
+        0 0 15px rgba(66,255,123,0.22);
+
+    transform: scale(1.02);
+}
+
+/* КНОПКА */
+.login-btn {
+    width: 100%;
+
+    padding: 14px;
+
+    margin-top: 15px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(135deg, #42ff7b, #1fa85a);
+
+    color: black;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+
+    box-shadow:
+        0 0 15px rgba(66,255,123,0.18);
+}
+
+/* HOVER */
+.login-btn:hover {
+    transform: translateY(-2px) scale(1.03);
+
+    box-shadow:
+        0 0 25px rgba(66,255,123,0.35);
+}
+
+/* DISABLED */
+.login-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* ПОСИЛАННЯ */
+.small-link {
+    display: block;
+
+    margin-top: 15px;
+
+    color: #7dffae;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+/* HOVER */
+.small-link:hover {
+    color: #42ff7b;
+
+    text-shadow: 0 0 8px rgba(66,255,123,0.35);
+}
+
+/* АНІМАЦІЯ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
     </style>
 </head>
 <body>
