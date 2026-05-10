@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BO — Повідомлення з Марсіанином</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body {
+    font-family: Arial;
+    background: linear-gradient(135deg, #0b0f1a, #1b2735, #2d5a27);
+    color: white;
+    margin: 0;
+}
+
+
+.sidebar {
+    background: rgba(10, 20, 15, 0.95);
+    border-right: 1px solid #42ff7b33;
+}
+
+
+.main {
+    padding: 20px;
+}
+
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 20px;
+    margin-bottom: 15px;
+    background: rgba(255,255,255,0.04);
+    padding: 12px;
+    border-radius: 14px;
+    border: 1px solid #42ff7b33;
+    box-shadow: 0 0 15px rgba(66,255,123,0.15);
+}
+
+.chat-header img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid #42ff7b;
+    object-fit: cover;
+}
+
+
+.chat-box {
+    background: rgba(5, 10, 15, 0.9);
+    padding: 15px;
+    border-radius: 15px;
+    height: 400px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #42ff7b33;
+    backdrop-filter: blur(6px);
+}
+
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9) translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.message {
+    padding: 10px 15px;
+    margin: 5px 0;
+    border-radius: 15px;
+    max-width: 70%;
+    font-size: 15px;
+    line-height: 1.4;
+    animation: popIn 0.3s ease-out;
+}
+
+
+.user {
+    background: linear-gradient(135deg, #2cff88, #1f9d63);
+    color: black;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+    box-shadow: 0 0 10px rgba(44,255,136,0.4);
+}
+
+.bot {
+    background: #1f2937;
+    border: 1px solid #42ff7b44;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+}
+
+
+.input-box {
+    display: flex;
+    margin-top: 10px;
+    gap: 8px;
+}
+
+.input-box input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #42ff7b55;
+    background: #101820;
+    color: white;
+    outline: none;
+}
+
+.input-box input::placeholder {
+    color: #8fdba8;
+}
+
+.input-box button {
+    padding: 0 15px;
+    height: 42px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #42ff7b, #1fa85a);
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.input-box button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(66,255,123,0.5);
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+    <div class="logo">BO</div>
+    <a href="page.html" class="menu-item">Головна</a>
+    <a href="search.html" class="menu-item">Пошук</a>
+    <a href="notifications.html" class="menu-item">Сповіщення</a>
+    <a href="messages.html" class="menu-item">Повідомлення</a>
+    <a href="profile.html" class="menu-item">Профіль</a>
+    <a href="settings.html" class="menu-item">Налаштування</a>
+    <a href="gamehub.html" class="menu-item active">Геймерський Хаб</a>
+    <a href="musilk.html" class="menu-item active">WOtify</a>
+</div>
+
+<div class="main">
+    <div class="chat-header">
+        <!-- Оновлене фото та ім'я -->
+        <img src="https://unn.ua/img/tags/1706213131-1842-large.webp">
+        Переписка з Марсіанином
+    </div>
+
+    <div class="chat-box" id="chat"></div>
+
+    <div class="input-box">
+        <input type="text" id="messageInput" placeholder="Напишіть Верховному лідеру..." onkeydown="if(event.key === 'Enter') sendMessage()">
+        <button onclick="sendMessage()">Надіслати</button>
+    </div>
+</div>
+
+<script>
+function sendMessage() {
+    let input = document.getElementById("messageInput");
+    let text = input.value;
+    if (text.trim() === "") return;
+
+    let chat = document.getElementById("chat");
+    let userMsg = document.createElement("div");
+    userMsg.className = "message user";
+    userMsg.textContent = text;
+    chat.appendChild(userMsg);
+    input.value = "";
+    chat.scrollTop = chat.scrollHeight;
+
+    setTimeout(replyMessage, 1000);
+}
+
+function replyMessage() {
+    // Оновлені репліки Кім Чен Ина
+    let replies = [
+        "👽 Вітаю, землянине.", 
+        "🛸 Сигнал отримано з орбіти Марса.", 
+        "🌌 Ми спостерігаємо за вами.", 
+        "🚀 Гіпердвигун уже активовано.", 
+        "🪐 На Марсі сьогодні пилова буря.",
+        "📡 Твій сигнал передано галактичній раді."
+        "👾 Земля виглядає дивно… але цікаво."
+        "☄️ Приготуйся до міжгалактичної подорожі."
+    ];
+    let random = replies[Math.floor(Math.random() * replies.length)];
+    let chat = document.getElementById("chat");
+    let botMsg = document.createElement("div");
+    botMsg.className = "message bot";
+    botMsg.textContent = random;
+    chat.appendChild(botMsg);
+    chat.scrollTop = chat.scrollHeight;
+}
+</script>
+</body>
+</html>
