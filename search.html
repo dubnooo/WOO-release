@@ -3,80 +3,169 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BO — Пошук</title>
+<title>BO — Пошук (Mars Mode)</title>
 
 <style>
+/* 🌋 МАРСІАНСЬКИЙ СТИЛЬ */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #000;
-    color: #fff;
+    color: #ffd7c2;
+
+    background:
+        radial-gradient(circle at top, #3a1f14 0%, #1a0d0a 45%, #070403 100%);
 }
 
+/* ПИЛ МАРСА */
+body::before {
+    content: "";
+    position: fixed;
+
+    width: 800px;
+    height: 800px;
+
+    background: rgba(255, 90, 40, 0.12);
+
+    border-radius: 50%;
+
+    filter: blur(140px);
+
+    top: -250px;
+    right: -200px;
+
+    z-index: -1;
+}
+
+/* SIDEBAR */
 .sidebar {
     position: fixed;
     width: 250px;
     height: 100%;
-    border-right: 5px solid #2f3336;
-    padding: 0px;
+
+    background: rgba(20,10,8,0.95);
+
+    border-right: 1px solid rgba(255,106,42,0.25);
+
+    padding: 10px;
 }
 
 .logo {
     font-size: 40px;
     font-weight: bold;
+
     margin-bottom: 30px;
+
+    color: #ff6a2a;
+
+    text-shadow: 0 0 15px rgba(255,106,42,0.4);
 }
 
 .menu-item {
     display: block;
-    padding: 12px 0;
-    font-size: 20px;
-    color: white;
+    padding: 12px 10px;
+
+    font-size: 18px;
+
+    color: #ffd7c2;
+
     text-decoration: none;
+
+    border-radius: 10px;
+
+    transition: 0.2s;
 }
 
 .menu-item:hover,
 .menu-item.active {
-    color: #1d9bf0;
+    background: rgba(255,106,42,0.2);
+    color: #ff6a2a;
 }
 
+/* MAIN */
 .main {
     margin-left: 250px;
     min-height: 100vh;
 }
 
+/* HEADER */
 .header {
     padding: 15px;
+
     font-size: 22px;
     font-weight: bold;
-    border-bottom: 5px solid #2f3336;
+
+    background: rgba(20,10,8,0.95);
+
+    border-bottom: 1px solid rgba(255,106,42,0.3);
+
+    backdrop-filter: blur(10px);
 }
 
+/* SEARCH */
 .search-box {
     padding: 20px;
 }
 
 .search-box input {
     width: 100%;
-    padding: 12px;
-    border-radius: 25px;
-    border: none;
-    background: #202327;
+
+    padding: 14px;
+
+    border-radius: 16px;
+
+    border: 1px solid rgba(255,106,42,0.2);
+
+    background: rgba(255,255,255,0.04);
+
     color: white;
+
     font-size: 16px;
+
     outline: none;
+
+    transition: 0.2s;
 }
 
+.search-box input:focus {
+    border-color: #ff6a2a;
+
+    box-shadow: 0 0 15px rgba(255,106,42,0.25);
+
+    transform: scale(1.01);
+}
+
+.search-box input::placeholder {
+    color: #ffb39a;
+}
+
+/* RESULTS */
 .results {
     padding: 20px;
 }
 
+/* USER CARD */
 .user-card {
-    background: #111;
+    background: rgba(10,8,6,0.92);
+
     padding: 15px;
-    border-radius: 15px;
+
+    border-radius: 16px;
+
     margin-bottom: 10px;
-    border: 1px solid #2f3336;
+
+    border: 1px solid rgba(255,106,42,0.2);
+
+    backdrop-filter: blur(10px);
+
+    transition: 0.2s;
+}
+
+.user-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 0 20px rgba(255,106,42,0.25);
+
+    border-color: #ff6a2a;
 }
 </style>
 </head>
@@ -92,28 +181,26 @@ body {
     <a href="profile.html" class="menu-item">Профіль</a>
     <a href="settings.html" class="menu-item">Налаштування</a>
     <a href="gamehub.html" class="menu-item">Геймерський Хаб</a>
-    <a href="musilk.html" class="menu-item active">WOtify</a>
+    <a href="musilk.html" class="menu-item">WOtify</a>
 </div>
 
 <div class="main">
-    <div class="header">Пошук</div>
+    <div class="header">Пошук (MarsNet)</div>
 
     <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Пошук користувачів..." onkeyup="searchUsers()">
+        <input type="text" id="searchInput" placeholder="Пошук користувачів на Марсі..." onkeyup="searchUsers()">
     </div>
 
     <div class="results" id="results"></div>
 </div>
 
 <script>
-// Демонстраційна база користувачів
 const users = [
-    {name: "Elon Musk", username: "elonmusk", bio: "Tesla & SpaceX"},
-    {name: "Mark Zuckerberg", username: "zuck", bio: "Meta CEO"},
-    {name: "Bill Gates", username: "billgates", bio: "Microsoft"},
-    {name: "Steve Jobs", username: "stevejobs", bio: "Apple"},
+    {name: "Elon Musk", username: "elonmusk", bio: "Mars colonization lead"},
+    {name: "Mark Zuckerberg", username: "zuck", bio: "Meta systems"},
+    {name: "Bill Gates", username: "billgates", bio: "Earth infrastructure"},
+    {name: "Steve Jobs", username: "stevejobs", bio: "Design spirit"},
     {name: "Orest Glodovsky", username: "orest", bio: "BO Developer"}
-    
 ];
 
 function searchUsers(){
@@ -129,7 +216,7 @@ function searchUsers(){
     );
 
     if(filtered.length === 0){
-        resultsDiv.innerHTML = "<p>Нічого не знайдено</p>";
+        resultsDiv.innerHTML = "<p>Нічого не знайдено на Марсі</p>";
         return;
     }
 
