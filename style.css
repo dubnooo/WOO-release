@@ -7,7 +7,7 @@
 
 
 
-        /* Навігація (Вкладки) */
+        
         .nav-tabs {
             display: flex;
             gap: 10px;
@@ -46,7 +46,7 @@
             display: block; /* Показуємо тільки активну */
         }
 
-        /* Стилі для Клікера */
+        
         #target {
             width: 60px; height: 60px;
             background: #ff7675;
@@ -62,7 +62,7 @@
             border-radius: 10px;
         }
 
-        /* Стилі для Малювання */
+        
         canvas {
             border: 2px solid #333;
             background: #fff;
@@ -71,7 +71,7 @@
             max-width: 700px;
         }
 
-        /* Стилі для RPG */
+        
         .rpg-container { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
         .card {
             border: 3px solid var(--primary);
@@ -85,7 +85,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #000;
+    background: #9C2E35;
     color: #fff;
 }
 
